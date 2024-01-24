@@ -1,0 +1,41 @@
+name: pytorch
+# If issues with pyg use wheels installation described in pyg docs
+channels:
+  - pytorch
+  - pyg
+  - conda-forge
+  - defaults
+dependencies:
+  - python
+  - pip
+  - pytest
+  # Core scientific python
+  - numpy                   # compatibility with numba and pysal
+  - pyqt
+  - scipy
+  # Plotting
+  - matplotlib              # plotting
+  # Spatial packages
+  - pandas
+  - geopandas
+  # Jupyter Environment
+  - ipykernel               # attach environment to Jupyter notebook functionality
+  - notebook                # Jupyter notebook
+  # Machine learning
+  - pytorch > 2.0
+  - torchvision
+  - torchaudio
+  - pytorch-lightning
+  - pytorch-ignite
+  - imageio
+  - einops
+
+
+## NOTE:
+# mamba env create -f pytorch.yml
+# conda activate pytorch
+# python -m ipykernel install --user --n pytorch
+
+# conda env remove -n pytorch
+# conda info --envs
+

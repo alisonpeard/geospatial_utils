@@ -1,0 +1,63 @@
+name: general
+# If issues with pyg use wheels installation described in pyg docs
+channels:
+  - conda-forge
+  - pyg
+  - defaults
+dependencies:
+  - python=3.9
+  - pip
+  - pytest
+  # Core scientific python
+  - numpy=1.21              # compatibility with numba and pysal
+  - numba                   # makes numpy compile faster
+  - pyqt
+  - tqdm                    # progress bars
+  - num2words               # useful
+  # Plotting
+  - matplotlib              # plotting
+  # Spatial packages
+  - gdal=3.5.3
+  # - pyogrio=0.4.2           # required for dask_geopandas.read_file() (causing problems)
+  - fiona=1.8.22
+  - pysal                   # for spatial data analytics [problematic]
+  - contextily
+  - pyshp                   # reading ESRI shapefiles
+  - pyproj>=3.0             # reprojecting pyshp objects
+  - rasterio                # manipulating rasters
+  - rasterstats             # summarise raster datasets
+  - geopy                   # get geocodes for locations
+  - cartopy                 # plotting maps
+  - descartes               # shapely / GeoJSON to matplotlib patches
+  - folium                  # for interactive maps
+  - geojson                 # manipulate geoJSONs
+  - xarray                  # use with sentnelhub
+  - h5netcdf
+  - rioxarray>=0.3.0        # extends xarray with rasterio backend
+  - scipy                   # scientific computing
+  - geopandas
+  - dask-geopandas
+  - openpyxl
+  - netCDF4                 # read .nc files
+  # - basemap               # not sure if this works yet, for .nc files too (causing problems)
+  - geemap                  # super helpful for GEE API
+  - ipyleaflet=0.12.3
+  - ipywidgets
+  - dask
+  # APIs
+  - pystac-client
+  # Jupyter Environment
+  - ipykernel               # attach environment to Jupyter notebook functionality
+  - notebook                # Jupyter notebook
+  - pip:
+    - planetary-computer
+    - zarr
+
+
+## NOTE:
+# mamba env create -f general.yml
+# conda activate general
+# python -m ipykernel install --user --n general
+
+# conda env remove -n general
+# conda info --envs

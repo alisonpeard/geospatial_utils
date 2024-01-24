@@ -1,0 +1,29 @@
+name: tensorflow
+channels:
+    - conda-forge
+    - defaults
+dependencies:
+    - python<3.11
+    - pip>=19.0
+    - ipython
+    - numpy<1.24
+    - pandas
+    - scipy
+    - matplotlib
+    - tensorflow
+    - wandb
+    - pyyaml
+    - tensorflow-probability
+    - tensorflow-gpu
+
+## NOTES:
+# -------
+# micromamba env create -f tensorflow_arc.yml
+# micromamba activate tensorflow
+# micromamba env remove -n tensorflow
+# micromamba info --envs
+
+# https://arc-software-guide.readthedocs.io/en/latest/apps/arc_tensorflow.html
+# interactive session
+# connect to htc cluster
+# srun -p interactive --pty /bin/bash

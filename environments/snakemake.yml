@@ -1,0 +1,26 @@
+name: snakemake
+channels:
+  - bioconda
+  - conda-forge
+dependencies:
+  - snakemake-minimal >=7.3
+  - pandas
+  - geopandas 
+  - matplotlib
+  - numpy
+  - xarray
+  - h5netcdf
+  - rioxarray>=0.3.0        # extends xarray with rasterio backend
+  - scipy                   # scientific computing
+  - geojson
+  - dask
+  - dask-geopandas
+  - netCDF4   
+
+## NOTE:
+# CONDA_SUBDIR=osx-64 mamba env create -f snakemake.yml
+# conda activate snakemake
+# conda config --env --set subdir osx-64
+
+# conda env remove -n snakemake
+# conda info --envs

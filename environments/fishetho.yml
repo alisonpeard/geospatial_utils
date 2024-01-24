@@ -1,0 +1,41 @@
+name: fishetho
+# If issues with pyg use wheels installation described in pyg docs
+channels:
+  - conda-forge
+  - pyg
+  - defaults
+dependencies:
+  - python=3.9
+  - pip
+  - pytest
+  # Core scientific python
+  - numpy=1.21              # compatibility with numba and pysal
+  - pyqt
+  - tqdm                    # progress bars
+  - num2words               # useful
+  - graph-tool
+  - networkx
+  - scikit-learn
+  # Plotting
+  - matplotlib              # plotting
+  # Spatial packages
+  - ipywidgets
+  - dask
+  # APIs
+  - pystac-client
+  # Jupyter Environment
+  - ipykernel               # attach environment to Jupyter notebook functionality
+  - notebook                # Jupyter notebook
+  - pip:
+    - planetary-computer
+    - zarr
+
+
+## NOTE:
+# mamba env create -f fishetho.yml
+# conda activate fishetho
+# python -m ipykernel install --user --n fishetho
+
+# conda env remove -n fishetho
+# conda info --envs
+
