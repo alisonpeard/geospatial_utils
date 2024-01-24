@@ -1,6 +1,0 @@
-Metadata-Version: 2.1
-Name: geospatial-utils
-Version: 0.1
-Summary: Handy geospatial functions for processing and visualisation. Recommend to install with -e flag.
-Author: Alison Peard
-Author-email: alison.peard@gmail.com

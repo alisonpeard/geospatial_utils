@@ -1,9 +1,0 @@
-setup.py
-geospatial_utils/__init__.py
-geospatial_utils/analysis_utils.py
-geospatial_utils/handy_gee.py
-geospatial_utils.egg-info/PKG-INFO
-geospatial_utils.egg-info/SOURCES.txt
-geospatial_utils.egg-info/dependency_links.txt
-geospatial_utils.egg-info/requires.txt
-geospatial_utils.egg-info/top_level.txt

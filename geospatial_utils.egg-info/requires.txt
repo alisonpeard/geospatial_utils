@@ -1,8 +1,0 @@
-python-igraph
-pandas
-geopandas
-networkx
-numpy
-scipy
-sklearn
-matplotlib
