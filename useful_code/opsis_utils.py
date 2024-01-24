@@ -7,7 +7,6 @@ import json
 # from ..module import object  # syntax for imports from parent directory
 
 
-from copy import copy
 import pandas as pd
 import geopandas as gpd
 from scipy.spatial import Voronoi

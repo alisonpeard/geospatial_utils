@@ -1,4 +1,5 @@
 import os
+from copy import copy
 os.environ['USE_PYGEOS'] = '0'
 import numpy as np
 import xarray as xr
@@ -71,8 +72,10 @@ def partition(geom, delta):
     grid = list(filter(prepared_geom.intersects, bounds))
     return grid, index
 
+
 def switch(a, b):
     return copy(b), copy(a)
+
 
 def create_aoi_grid(centroid, mesh=10_000, height=200_000, width=100_000, rotation=0, local_crs="EPSG:3857"):
     """Create a rotated geopandas.GeoDataFrame grid.
@@ -102,10 +105,10 @@ def create_aoi_grid(centroid, mesh=10_000, height=200_000, width=100_000, rotati
         index = [[x[1], x[0]] for x in index]
         return np.array(index)
 
-    if (90 <= rotation < 180) | (270 <= rotation < 360): height, width = switch(height, width)
+    # if (90 <= rotation < 180) | (270 <= rotation < 360): height, width = switch(height, width)
     boundary = create_aoi(centroid, height, width, local_crs=local_crs).geometry[0]
     grid, index = partition(boundary, mesh)
-    if (90 <= rotation < 180) | (270 <= rotation < 360): index = transpose_indices(index)
+    # if (90 <= rotation < 180) | (270 <= rotation < 360): index = transpose_indices(index)
     grid = MultiPolygon(grid)
     grid = rotate(grid, rotation, 'center') # [rotate(x, rotation, 'center') for x in grid]
     return gpd.GeoSeries(list(grid.geoms)), index
