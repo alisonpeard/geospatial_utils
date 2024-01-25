@@ -1,8 +1,8 @@
-# Geospatial Utilities
+# Geospatial utilities
 Useful operations for manipulating xarray, geopandas, and numpy geospatial data
 
 # Creating grids from geospatial data
-Grids are specified by centroid, height, width, rotation, and mesh. For numerical simulations, transform to numpy is always done such that causality goes from $[0,0]->[n,m]$ (red dot in diagram represents $[0,0]$ location.. E.g., for modelling waves the rotation should be chosen depending on the angle of the coastline as follows:
+Grids are specified by centroid, height, width, rotation, and mesh. For numerical simulations, transform to numpy is always done such that causality goes from $[0,0]->[n,m]$ (red dot in diagram represents $[0,0]$ location). E.g., for modelling waves the rotation should be chosen depending on the angle of the coastline as follows:
 <p align="center">
 <img src='https://github.com/alisonpeard/geospatial_utils/assets/41169293/066cb5a7-b559-4fa6-81c4-4d3f1eb1220a' width='400'>
 </p>
