@@ -3,6 +3,7 @@ from copy import copy
 os.environ['USE_PYGEOS'] = '0'
 import numpy as np
 import xarray as xr
+from scipy.spatial import cKDTree
 import geopandas as gpd
 from shapely.geometry import box, Polygon, MultiPolygon
 from shapely.affinity import rotate # for aoi
@@ -135,6 +136,38 @@ def grid_zonal_statistics(grid, index, gdf, crs, columns=['speed', 'direction'])
     
     gdf = gdf[['i', 'j'] + columns + ['geometry']].groupby('geometry').mean().reset_index()[['i', 'j'] + columns + ['geometry']]
     gdf = gpd.GeoDataFrame(gdf, geometry="geometry").set_crs(crs)
+    return gdf
+
+
+def grid_ckdnearest(grid, index, gdf, columns, k=1, max_dist=np.inf, aggfunc=np.mean):
+    """
+    Aggregate k nearest neighbours to each grid centroid.
+    
+    Adapted from OPSIS from https://gis.stackexchange.com/questions/222315/finding-nearest-point-in-other-geodataframe-using-geopandas
+    """
+    assert grid.crs == gdf.crs, "Input dataframes must have same crs."
+    grid = gpd.GeoDataFrame(geometry=grid.centroid).set_crs(grid.crs)
+    
+    nA = np.array(list(grid.geometry.apply(lambda x: (x.x, x.y))))
+    nB = np.array(list(gdf.geometry.apply(lambda x: (x.x, x.y))))
+    btree = cKDTree(nB)
+    dist, idB = btree.query(nA, k=k)
+    
+    idA = np.repeat(grid.index, k)
+    idB = idB.ravel(order='C')
+    dist = dist.ravel(order='C')
+    
+    gdf = gdf.iloc[idB].drop(columns="geometry").reset_index(drop=True)
+    gdf['index'] = idA
+    gdf['dist'] = dist
+    
+    gdf.loc[gdf['dist'] >= max_dist, columns] = np.nan
+    gdf = gdf.drop(columns="dist")
+    gdf = gdf.groupby('index').agg(aggfunc)
+    
+    gdf['i'] = [int(x[0]) for x in index]
+    gdf['j'] = [int(x[1]) for x in index]
+    gdf = gpd.GeoDataFrame(gdf, geometry=grid.geometry).set_crs(grid.crs)
     return gdf
 
 
