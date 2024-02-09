@@ -8,10 +8,8 @@ setup(
     description="Handy geospatial functions for processing and visualisation. Recommend to install with -e flag.",
     packages=find_packages(),
     install_requires=[
-        "python-igraph",
         "pandas",
         "geopandas",
-        "networkx",
         "numpy",
         "scipy",
         "sklearn",
