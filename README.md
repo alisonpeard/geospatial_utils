@@ -12,7 +12,8 @@ Grids are specified by centroid, height, width, rotation, and mesh. For numerica
 <img src='https://github.com/alisonpeard/geospatial_utils/assets/41169293/55f6ba7b-32b5-4f60-878c-0dd5d9f44440' width='500'>
 
 # Gaussian random fields
-Using loose interpretation of GRFs, sample from distance-based covariance matrix.
+Using loose interpretation of GRFs, sample from distance-based covariance matrix
+$$C(\Delta x) = \cos(\frac{2\pi\Delta x}{\ell}).$$
 <p align="center">
 <img src='https://github.com/alisonpeard/geospatial_utils/assets/41169293/b6927956-db89-4465-b7b2-2c863000ec23' width='500'>
 </p>
