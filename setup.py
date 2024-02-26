@@ -12,7 +12,8 @@ setup(
         "geopandas",
         "numpy",
         "scipy",
-        "sklearn",
-        "matplotlib"
+        "scikit-learn",
+        "matplotlib",
+        "xarray"
     ]
 )
