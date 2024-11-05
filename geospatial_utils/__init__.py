@@ -8,6 +8,7 @@ from .utils import *
 from .gridding import *
 from .xarray import *
 from .fields import *
+from .ibtracs import *
 
 __version__ = "0.01"
 __author__ = """Alison Peard"""

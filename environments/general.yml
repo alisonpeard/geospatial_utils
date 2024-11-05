@@ -32,9 +32,12 @@ dependencies:
   - folium                  # for interactive maps
   - geojson                 # manipulate geoJSONs
   - xarray                  # use with sentnelhub
-  - h5netcdf
+  - xesmf                   # regridding xarray datasets
+  - esmpy                   # requirement of xesmf
+  - h5netcdf                # xarray NetCDF driver
   - rioxarray>=0.3.0        # extends xarray with rasterio backend
   - scipy                   # scientific computing
+  - esri::arcpy=3.7         # for converting .lyrx files using https://github.com/arc2qgis/lyrxtoqml/blob/master/bulk_lyr_convert.py
   - geopandas
   - dask-geopandas
   - openpyxl
@@ -46,6 +49,7 @@ dependencies:
   - dask
   # APIs
   - pystac-client
+  - cdsapi
   # Jupyter Environment
   - ipykernel               # attach environment to Jupyter notebook functionality
   - notebook                # Jupyter notebook

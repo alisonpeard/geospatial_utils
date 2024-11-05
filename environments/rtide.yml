@@ -1,0 +1,46 @@
+name: rtide
+channels:
+  - conda-forge
+  - pyg
+  - defaults
+dependencies:
+  - python=3.9
+  - pip
+  - tqdm
+  - pytest
+  - numpy
+  - scipy
+  - pandas
+  - matplotlib
+  - scikit-learn
+  - skyfield
+  - ipykernel
+  - pytorch
+  - wandb
+  - notebook # option to use Jupyter notebooks
+  - tensorly-torch
+  - opt-einsum
+  - ruamel.yaml
+  - h5py
+  - zarr
+  - pip:
+    - utide
+    - configmypy
+    - tensorflow-macos==2.12
+    - tensorflow-metal==0.8.0
+    #- neuraloperator # import neuralop, install editable from github repo
+    - wandb
+    - torch-harmonics
+
+# TERMINAL COMMANDS:
+# --------------------
+# CREATE ENV:
+# mamba env create -f rtide.yml
+# conda activate rtide
+# python -m ipykernel install --user --n rtide
+
+# REMOVE ENV:
+# conda deactivate
+# conda env remove -n rtide
+# conda info --envs
+

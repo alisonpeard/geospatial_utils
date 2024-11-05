@@ -139,7 +139,7 @@ def grid_zonal_statistics(grid, index, gdf, crs, columns=['speed', 'direction'])
     return gdf
 
 
-def grid_ckdnearest(grid, index, gdf, columns, k=1, max_dist=np.inf, aggfunc=np.mean):
+def grid_ckdnearest(grid, gdf, columns, index=None, k=1, max_dist=np.inf, aggfunc=np.mean):
     """
     Aggregate k nearest neighbours to each grid centroid.
     
@@ -165,8 +165,9 @@ def grid_ckdnearest(grid, index, gdf, columns, k=1, max_dist=np.inf, aggfunc=np.
     gdf = gdf.drop(columns="dist")
     gdf = gdf.groupby('index').agg(aggfunc)
     
-    gdf['i'] = [int(x[0]) for x in index]
-    gdf['j'] = [int(x[1]) for x in index]
+    if index is not None:
+        gdf['i'] = [int(x[0]) for x in index]
+        gdf['j'] = [int(x[1]) for x in index]
     gdf = gpd.GeoDataFrame(gdf, geometry=grid.geometry).set_crs(grid.crs)
     return gdf
 
